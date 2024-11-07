@@ -1,0 +1,1 @@
+Read inputs from a file (input.txt) that has one line string

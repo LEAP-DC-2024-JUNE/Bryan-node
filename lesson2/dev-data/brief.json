@@ -1,0 +1,37 @@
+[
+  {
+    "id": 0,
+    "productName": "Fresh Avocados",
+    "image": "🥑",
+    "price": "6.50",
+    "organic": true
+  },
+  {
+    "id": 1,
+    "productName": "Goat and Sheep Cheese",
+    "image": "🧀",
+    "price": "5.00",
+    "organic": false
+  },
+  {
+    "id": 2,
+    "productName": "Apollo Broccoli",
+    "image": "🥦",
+    "price": "5.50",
+    "organic": true
+  },
+  {
+    "id": 3,
+    "productName": "Baby Carrots",
+    "image": "🥕",
+    "price": "3.00",
+    "organic": true
+  },
+  {
+    "id": 4,
+    "productName": "Sweet Corncobs",
+    "image": "🌽",
+    "price": "2.00",
+    "organic": false
+  }
+]
