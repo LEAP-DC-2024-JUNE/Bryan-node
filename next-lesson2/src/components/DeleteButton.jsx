@@ -6,12 +6,9 @@ import { Delete } from "./Icons";
 const DeleteButton = ({ id }) => {
   const router = useRouter();
   const deleteItem = async () => {
-    const response = await fetch(
-      `https://zfd26qss-8000.use2.devtunnels.ms/api/items/${id}`,
-      {
-        method: "DELETE",
-      }
-    );
+    const response = await fetch(`http://127.0.0.1:8000/api/items/${id}`, {
+      method: "DELETE",
+    });
     if (response.ok) {
       router.push("/practice-1");
     } else {

@@ -57,7 +57,7 @@ const NewItemForm = () => {
       alert("Missing information");
       return;
     }
-    fetch("https://zfd26qss-8000.use2.devtunnels.ms/api/items", {
+    fetch("http://127.0.0.1:8000/api/items", {
       // mode: "no-cors",
       method: "POST",
       headers: {
