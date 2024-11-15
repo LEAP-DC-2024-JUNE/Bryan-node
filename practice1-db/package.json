@@ -1,11 +1,10 @@
 {
-  "name": "lesson4-practice1",
+  "name": "practice1-db",
   "version": "1.0.0",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "reset-data": "node backup_data/reset_db.js",
-    "start": "node db-server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +14,6 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
-    "mysql": "^2.18.1"
+    "mysql2": "^3.11.4"
   }
 }
