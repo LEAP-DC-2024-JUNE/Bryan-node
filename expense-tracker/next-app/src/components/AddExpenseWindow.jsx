@@ -148,16 +148,18 @@ const AddExpenseWindow = ({ isOpen, setIsOpen, fetchData }) => {
           {showError && "Missing information."}
         </div>
 
-        <div className="w-full flex-shrink-0 flex space-around">
+        <div className="w-full flex-shrink-0 flex gap-5 space-around">
           <button
             onClick={handleClickAdd}
-            className="w-36 px-4 py-2 border-2 border-blue-400 bg-white hover:bg-blue-400 mx-auto text-xl rounded-xl text-blue-400 hover:text-white font-semibold transition-all duration-500"
+            // className="w-36 px-4 py-2 border-2 border-blue-400 bg-white hover:bg-blue-400 mx-auto text-xl rounded-xl text-blue-400 hover:text-white font-semibold transition-all duration-500"
+            className="button button-blue w-1/2 hover:!bg-blue-400"
           >
             Add
           </button>
           <button
             onClick={closeAddWindow}
-            className="w-36 px-4 py-2 border-2 border-red-400 bg-white hover:bg-red-400 mx-auto text-xl rounded-xl text-red-400 hover:text-white font-semibold transition-all duration-500"
+            // className="w-36 px-4 py-2 border-2 border-red-400 bg-white hover:bg-red-400 mx-auto text-xl rounded-xl text-red-400 hover:text-white font-semibold transition-all duration-500"
+            className="button button-red w-1/2 hover:!bg-red-400"
           >
             Cancel
           </button>

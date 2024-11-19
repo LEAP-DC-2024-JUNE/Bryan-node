@@ -1,15 +1,17 @@
 "use client";
 
-const dotenv = require("dotenv").config();
+const dotenv = require("dotenv");
+dotenv.config();
 
 import AddExpenseWindow from "@/components/AddExpenseWindow";
 import EditExpenseWindow from "@/components/EditExpenseWindow";
+import Loading from "@/components/Loading";
 import ExpenseItem from "@/components/ExpenseItem";
 import { Add, Chart } from "@/components/Icons";
-import Loading from "@/components/Loading";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { v4 } from "uuid";
+import clsx from "clsx";
 
 const Home = () => {
   const [isAddOpen, setIsAddOpen] = useState(false);
@@ -18,6 +20,7 @@ const Home = () => {
   const [expenses, setExpenses] = useState();
   const [loading, setLoading] = useState(true);
 
+  // Get all expenses
   const fetchData = async () => {
     try {
       const res = await fetch(
@@ -31,6 +34,7 @@ const Home = () => {
     }
   };
 
+  // Show a loading component before the data is received.
   useEffect(() => {
     setLoading(true);
     fetchData().finally(() => setLoading(false));
@@ -38,12 +42,15 @@ const Home = () => {
 
   if (loading) return <Loading />;
   return (
-    <div className="flex flex-col gap-8 justify-center items-center xs:px-5">
-      <h1 className="text-center text-4xl font-bold mt-5">Expenses</h1>
-      <div className="w-full max-w-screen-md border-2 border-black p-3 shadow-lg shadow-gray-400 rounded-lg">
-        <table className="w-full border-collapse text-xs md:text-base ">
+    <main className="flex flex-col gap-8 items-center xs:px-5">
+      {/* Heading of the page */}
+      <h1 className="text-3xl md:text-5xl font-bold mt-5">Expenses</h1>
+
+      {/* The data table */}
+      <div className="w-full max-w-screen-lg border-2 border-black p-3 shadow-lg shadow-gray-400 rounded-lg">
+        <table className="w-full border-collapse text-xs md:text-2xl ">
           <thead>
-            <tr className="bg-[#91eeed] text-neutral-700">
+            <tr className="bg-[#7352ef] text-white">
               <th className="text-left w-[15%] p-2">Date</th>
               <th className="text-left w-[50%] hidden md:table-cell">
                 Description
@@ -63,16 +70,18 @@ const Home = () => {
                 setIsEditOpen={setIsEditOpen}
                 setEditId={setEditId}
                 fetchData={fetchData}
-                color={i % 2 == 1 ? "bg-gray-200" : "bg-white"}
+                color={clsx({ "bg-gray-200": i % 2 == 1 })} // Try changing to `clsx`
               />
             ))}
           </tbody>
         </table>
       </div>
+
+      {/* The Add button and Link to charts page */}
       <div className="flex flex-col md:flex-row flex-wrap gap-5">
+        {/* Opens the Add Expense Window */}
         <button
-          className="flex gap-3 items-center border-2 border-blue-400 rounded-xl
-        text-blue-400 hover:text-white hover:bg-blue-400 font-semibold text-xl px-5 py-3 fill-blue-400 hover:fill-white transition-all duration-500"
+          className="button button-blue"
           onClick={() => {
             setIsAddOpen(true);
           }}
@@ -80,10 +89,11 @@ const Home = () => {
           <Add />
           Add Expense
         </button>
+
+        {/* Redirects to the Chart page */}
         <Link
           href="/chart"
-          className="flex gap-3 items-center border-2 border-orange-400 rounded-xl
-        text-orange-400 hover:text-white hover:bg-orange-400 font-semibold text-xl px-5 py-3 fill-orange-400 hover:fill-white transition-all duration-500"
+          className="button button-orange"
           // onClick={() => {
           //   // Handle show in chart
           // }}
@@ -92,20 +102,24 @@ const Home = () => {
           Show Chart
         </Link>
       </div>
-      <AddExpenseWindow
-        isOpen={isAddOpen}
-        setIsOpen={setIsAddOpen}
-        fetchData={fetchData}
-      />
-      <EditExpenseWindow
-        isOpen={isEditOpen}
-        setIsOpen={setIsEditOpen}
-        id={editId}
-        setId={setEditId}
-        expense={expenses.find((expense) => expense.id === editId)}
-        fetchData={fetchData}
-      />
-    </div>
+
+      {/* The Modal components */}
+      <div>
+        <AddExpenseWindow
+          isOpen={isAddOpen}
+          setIsOpen={setIsAddOpen}
+          fetchData={fetchData}
+        />
+        <EditExpenseWindow
+          isOpen={isEditOpen}
+          setIsOpen={setIsEditOpen}
+          id={editId}
+          setId={setEditId}
+          expense={expenses.find((expense) => expense.id === editId)}
+          fetchData={fetchData}
+        />
+      </div>
+    </main>
   );
 };
 

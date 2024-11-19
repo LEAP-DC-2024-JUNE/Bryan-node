@@ -25,10 +25,12 @@ const ExpenseItem = ({
   const handleAction = async (event) => {
     const action = event.target.value;
     if (action === "edit") {
+      // If the Edit button is clicked change to that expenses id.
       setEditId(expense.id);
       // console.log(editId);
       // setIsEditOpen(true);
     } else if (action === "delete") {
+      // If the Delete button is clicked send the Delete request and refresh the data.
       await fetch(
         `https://zfd26qss-8000.use2.devtunnels.ms/api/expenses/${expense.id}`,
         {
@@ -37,15 +39,16 @@ const ExpenseItem = ({
       );
       await fetchData();
     }
-    event.target.value = "";
+    event.target.value = ""; // Change the selected option back to the empty one
   };
 
+  // When the edit id changes, open the edit window if an edit id is selected (edit id is not -1)
   useEffect(() => {
-    console.log(editId);
     setIsEditOpen(editId != -1);
   }, [editId]);
   return (
-    <tr className={`${color}`}>
+    <tr className={color}>
+      {/* Color is either white or gray depending on where the expense is located */}
       <td className="p-2 align-top">{formatDate(expense.date)}</td>
       <td className="p-2 align-top hidden md:table-cell">
         {expense.description}
