@@ -23,9 +23,7 @@ const Home = () => {
   // Get all expenses
   const fetchData = async () => {
     try {
-      const res = await fetch(
-        "https://zfd26qss-8000.use2.devtunnels.ms/api/expenses"
-      );
+      const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/expenses`);
       if (!res.ok) throw new Error("Failed to fetch data");
       const data = await res.json();
       setExpenses(data);

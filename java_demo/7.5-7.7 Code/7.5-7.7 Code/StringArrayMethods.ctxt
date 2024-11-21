@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=StringArrayMethods
+comment0.text=\r\n\ This\ program\ demonstrates\ the\ toUpperCase\ method\r\n\ being\ called\ from\ the\ elements\ of\ a\ String\ array.\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+numComments=2

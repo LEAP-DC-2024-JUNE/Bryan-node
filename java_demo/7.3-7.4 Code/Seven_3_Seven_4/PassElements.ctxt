@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=PassElements
+comment0.text=\r\n\ This\ program\ demonstrates\ passing\ individual\ array\r\n\ elements\ as\ arguments\ to\ a\ method.\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=n
+comment2.target=void\ showValue(int)
+comment2.text=\r\n\ The\ showValue\ method\ displays\ its\ argument.\r\n
+numComments=3

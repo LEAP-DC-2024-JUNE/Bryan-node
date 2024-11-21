@@ -56,7 +56,7 @@ const AddExpenseWindow = ({ isOpen, setIsOpen, fetchData }) => {
       return;
     } else {
       try {
-        await fetch("https://zfd26qss-8000.use2.devtunnels.ms/api/expenses", {
+        await fetch(`${process.env.NEXT_PUBLIC_URL}/api/expenses`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -121,10 +121,10 @@ const AddExpenseWindow = ({ isOpen, setIsOpen, fetchData }) => {
               className="border-2 border-black  px-4 py-1 rounded-lg"
             >
               <option value="" defaultValue={true} hidden disabled></option>
-              <option value="Food">Food</option>
-              <option value="Entertainment">Entertainment</option>
-              <option value="Transportation">Transportation</option>
-              <option value="Accommodation">Accommodation</option>
+              <option value="1">Food</option>
+              <option value="2">Entertainment</option>
+              <option value="3">Transportation</option>
+              <option value="4">Accommodation</option>
             </select>
           </div>
           <div className="flex flex-col gap-1 w-full">

@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=SalesData
+comment0.text=\r\n\ This\ class\ keeps\ the\ sales\ figures\ for\ a\ number\ of\r\n\ days\ in\ an\ array\ and\ provides\ methods\ for\ getting\r\n\ the\ total\ and\ average\ sales,\ and\ the\ highest\ and\r\n\ lowest\ amounts\ of\ sales.\r\n
+comment1.params=s
+comment1.target=SalesData(double[])
+comment1.text=\r\n\ The\ constructor\ accepts\ an\ array\ as\ an\ argument.\r\n\ The\ elements\ in\ the\ argument\ array\ are\ copied\r\n\ to\ the\ sales\ array.\r\n
+comment2.params=
+comment2.target=double\ getTotal()
+comment2.text=\r\n\ The\ getTotal\ method\ returns\ the\ total\ of\ the\r\n\ elements\ in\ the\ sales\ array.\r\n
+comment3.params=
+comment3.target=double\ getAverage()
+comment3.text=\r\n\ The\ getAverage\ method\ returns\ the\ average\ of\ the\r\n\ elements\ in\ the\ sales\ array.\r\n
+comment4.params=
+comment4.target=double\ getHighest()
+comment4.text=\r\n\ The\ getHighest\ method\ returns\ the\ highest\ value\r\n\ stored\ in\ the\ sales\ array.\r\n
+comment5.params=
+comment5.target=double\ getLowest()
+comment5.text=\r\n\ The\ getLowest\ method\ returns\ the\ lowest\ value\r\n\ stored\ in\ the\ sales\ array.\r\n
+numComments=6

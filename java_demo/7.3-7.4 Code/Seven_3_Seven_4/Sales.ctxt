@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Sales
+comment0.text=\r\n\ This\ program\ gathers\ sales\ amounts\ for\ the\ week.\ \r\n\ It\ uses\ the\ SalesData\ class\ to\ display\ the\ total,\ \r\n\ average,\ highest,\ and\ lowest\ sales\ amounts.\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=array
+comment2.target=void\ getValues(double[])
+comment2.text=\r\n\ The\ following\ method\ accepts\ an\ array\ as\ its\ \r\n\ argument.\ The\ user\ is\ asked\ to\ enter\ sales\ \ \r\n\ amounts\ for\ each\ element.\r\n
+numComments=3

@@ -31,16 +31,15 @@ const ExpenseItem = ({
       // setIsEditOpen(true);
     } else if (action === "delete") {
       // If the Delete button is clicked send the Delete request and refresh the data.
-      await fetch(
-        `https://zfd26qss-8000.use2.devtunnels.ms/api/expenses/${expense.id}`,
-        {
-          method: "DELETE",
-        }
-      );
+      await fetch(`${process.env.NEXT_PUBLIC_URL}/api/expenses/${expense.id}`, {
+        method: "DELETE",
+      });
       await fetchData();
     }
     event.target.value = ""; // Change the selected option back to the empty one
   };
+
+  const types = ["Food", "Entertainment", "Transportation", "Accommodation"];
 
   // When the edit id changes, open the edit window if an edit id is selected (edit id is not -1)
   useEffect(() => {
@@ -53,7 +52,7 @@ const ExpenseItem = ({
       <td className="p-2 align-top hidden md:table-cell">
         {expense.description}
       </td>
-      <td className="p-2 align-top">{expense.type}</td>
+      <td className="p-2 align-top">{types[parseInt(expense.type) - 1]}</td>
       <td className="p-2 align-top">{formatAmount(expense.amount)}</td>
       <td className="p-2 align-top">
         {/* <Menu /> */}

@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=ObjectArray
+comment0.text=\r\n\ This\ program\ works\ with\ an\ array\ of\ InventoryItem\ objects.\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=array
+comment2.target=void\ getItems(InventoryItem[])
+comment2.text=\r\n\ The\ getItems\ method\ accepts\ an\ InventoryItem\ array\ as\ \r\n\ an\ argument.\ The\ user\ enters\ data\ for\ each\ element.\r\n
+numComments=3

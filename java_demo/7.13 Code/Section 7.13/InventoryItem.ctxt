@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=InventoryItem
+comment0.text=\r\n\ This\ class\ uses\ three\ constructors.\r\n
+comment1.params=
+comment1.target=InventoryItem()
+comment1.text=\r\n\ No-arg\ constructor\r\n
+comment2.params=d
+comment2.target=InventoryItem(java.lang.String)
+comment2.text=\r\n\ The\ following\ constructor\ accepts\ a\ \ \ \ \ \ \r\n\ String\ argument\ which\ is\ assigned\ to\ the\ \r\n\ description\ field.\r\n
+comment3.params=d\ u
+comment3.target=InventoryItem(java.lang.String,\ int)
+comment3.text=\r\n\ The\ following\ constructor\ accepts\ a\ \ \ \ \ \ \r\n\ String\ argument\ which\ is\ assigned\ to\ the\ \r\n\ description\ field,\ and\ an\ int\ argument\ \ \ \r\n\ which\ is\ assigned\ to\ the\ units\ field.\r\n
+comment4.params=d
+comment4.target=void\ setDescription(java.lang.String)
+comment4.text=\r\n\ The\ setDescription\ method\ assigns\ its\ \ \ \ \r\n\ argument\ to\ the\ description\ field.\r\n
+comment5.params=u
+comment5.target=void\ setUnits(int)
+comment5.text=\r\n\ The\ setUnits\ method\ assigns\ its\ argument\ \r\n\ to\ the\ units\ field.\r\n
+comment6.params=
+comment6.target=java.lang.String\ getDescription()
+comment6.text=\r\n\ The\ getDescription\ method\ returns\ the\ \ \ \ \r\n\ value\ in\ the\ description\ field.\r\n
+comment7.params=
+comment7.target=int\ getUnits()
+comment7.text=\r\n\ The\ getUnits\ method\ returns\ the\ value\ in\ \r\n\ the\ units\ field.\r\n
+numComments=8

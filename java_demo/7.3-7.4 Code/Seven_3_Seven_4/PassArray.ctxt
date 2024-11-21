@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=PassArray
+comment0.text=\r\n\ This\ program\ demonstrates\ passing\ an\ array\ as\ an\r\n\ argument\ to\ a\ method.\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=array
+comment2.target=void\ getValues(int[])
+comment2.text=\r\n\ The\ getValues\ method\ accepts\ an\ array\ as\ its\r\n\ argument.\ The\ user\ is\ asked\ to\ enter\ a\ value\r\n\ for\ each\ element.\r\n
+comment3.params=array
+comment3.target=void\ showArray(int[])
+comment3.text=\r\n\ The\ showArray\ method\ accepts\ an\ array\ as\ \ \r\n\ an\ argument\ displays\ its\ contents.\r\n
+numComments=4

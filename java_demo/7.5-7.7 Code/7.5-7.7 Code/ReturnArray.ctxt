@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=ReturnArray
+comment0.text=\r\n\ This\ program\ demonstrates\ how\ a\ reference\ to\ an\r\n\ array\ can\ be\ returned\ from\ a\ method.\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=
+comment2.target=double[]\ getArray()
+comment2.text=\r\n\ The\ getArray\ method\ returns\ a\ reference\ to\ \r\n\ an\ array\ of\ doubles.\r\n
+comment3.params=size
+comment3.target=double[]\ getArray(int)
+comment3.text=\r\n\ The\ getArray\ method\ returns\ a\ reference\ to\ \r\n\ an\ array\ of\ doubles.\r\n
+numComments=4
