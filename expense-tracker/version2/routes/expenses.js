@@ -23,7 +23,7 @@ router.post("", (request, response) => {
   const { date, description, type, amount } = request.body;
   let typeId = parseInt(type);
   const sql =
-    "INSERT INTO tb_expenses (c_date, c_description, fk_expense_type, c_amount) VALUES (?, ?, ?, ?)";
+    "INSERT INTO tb_expenses (c_date, c_description, c_amount, fk_expense_type) VALUES (?, ?, ?, ?)";
   db.query(sql, [date, description, typeId, amount], (err, result) => {
     if (err) {
       console.log("Error occured while inserting a new expense.");

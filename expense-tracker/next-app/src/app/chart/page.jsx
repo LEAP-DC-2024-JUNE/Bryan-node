@@ -14,7 +14,6 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import Loading from "@/components/Loading";
-import moment from "moment";
 import { execOnce } from "next/dist/shared/lib/utils";
 import { v4 } from "uuid";
 
@@ -33,13 +32,12 @@ const MyBarChart = () => {
   const [expenses, setExpenses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentYear, setCurrentYear] = useState("2024");
-  // const [datasets, setDatasets] = useState([
-  //   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-  // ]);
-  const [data, setData] = useState();
+  // const [data, setData] = useState();
   const [max, setMax] = useState(100);
   const [years, setYears] = useState([]);
+  const [datasets, setDatasets] = useState([]);
 
+  // The month labels
   const labels = [
     "Jan",
     "Feb",
@@ -54,35 +52,37 @@ const MyBarChart = () => {
     "Nov",
     "Dec",
   ];
-  // const data = {
-  //   labels: labels,
-  //   datasets: [
-  //     {
-  //       // Title of Graph
-  //       label: currentYear,
-  //       data: getDatasets(),
-  //       backgroundColor: [
-  //         "rgba(255, 99, 132, 0.2)",
-  //         "rgba(255, 159, 64, 0.2)",
-  //         "rgba(255, 205, 86, 0.2)",
-  //         "rgba(75, 192, 192, 0.2)",
-  //       ],
-  //       borderColor: [
-  //         "rgb(255, 99, 132)",
-  //         "rgb(255, 159, 64)",
-  //         "rgb(255, 205, 86)",
-  //         "rgb(75, 192, 192)",
-  //       ],
-  //       borderWidth: 1,
-  //       barPercentage: 1,
-  //       borderRadius: {
-  //         topLeft: 5,
-  //         topRight: 5,
-  //       },
-  //     },
-  //     // insert similar in dataset object for making multi bar chart
-  //   ],
-  // };
+
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label: "2024",
+        data: datasets,
+        backgroundColor: [
+          "rgba(255, 99, 132, 0.2)",
+          "rgba(255, 159, 64, 0.2)",
+          "rgba(255, 205, 86, 0.2)",
+          "rgba(75, 192, 192, 0.2)",
+        ],
+        borderColor: [
+          "rgb(255, 99, 132)",
+          "rgb(255, 159, 64)",
+          "rgb(255, 205, 86)",
+          "rgb(75, 192, 192)",
+        ],
+        borderWidth: 1,
+        barPercentage: 1,
+        borderRadius: {
+          topLeft: 5,
+          topRight: 5,
+        },
+      },
+    ],
+  };
+
+  // Configurations for the chart
+  // Use the state `max` to scale appropriately to currect data
   const options = {
     scales: {
       y: {
@@ -104,6 +104,7 @@ const MyBarChart = () => {
     },
   };
 
+  // Get's all the data and stores it in expenses
   const fetchData = async () => {
     try {
       console.log("Calling API...");
@@ -116,7 +117,11 @@ const MyBarChart = () => {
     }
   };
 
-  const getDatasets = () => {
+  // 1. Filters the data by the `currentYear`
+  // 2. Adds up the amounts of expenses with the same months
+  // 3. Inserts those sums into an array that can be used as data from the chart.
+  // 4. Returns that array
+  const updateDatasets = () => {
     if (expenses.length === 0) return [];
     const filteredData = expenses
       .filter(
@@ -139,90 +144,40 @@ const MyBarChart = () => {
     console.log(amounts);
     setMax(Math.max(amounts));
 
-    return amounts;
+    setDatasets(amounts);
   };
 
-  useEffect(() => {
-    async function fetchAndFilter() {
-      try {
-        setLoading(true);
-        await fetchData();
-        // filterYear();
-        setLoading(false);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-
-    fetchAndFilter();
-  }, []);
-
-  useEffect(() => {
+  // Store the years that include the expenses into the state `years`
+  const getAvailableYears = () => {
     let newYears = [];
     expenses.map((expense) => {
       const year = new Date(expense.date).getFullYear();
       if (!newYears.includes(year)) newYears.push(year);
     });
-    console.log(newYears);
     setYears(newYears);
-    console.log(years);
-    setData({
-      labels: labels,
-      datasets: [
-        {
-          label: "2024",
-          data: getDatasets(),
-          backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-            "rgba(255, 205, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-          ],
-          borderColor: [
-            "rgb(255, 99, 132)",
-            "rgb(255, 159, 64)",
-            "rgb(255, 205, 86)",
-            "rgb(75, 192, 192)",
-          ],
-          borderWidth: 1,
-          barPercentage: 1,
-          borderRadius: {
-            topLeft: 5,
-            topRight: 5,
-          },
-        },
-      ],
-    });
-  }, [expenses]);
+  };
+
+  // Waits for the fetchData to get data and sets the `loading` stat to `false`.
+  useEffect(() => {
+    try {
+      setLoading(true);
+      fetchData().finally(() => {
+        setLoading(false);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
 
   useEffect(() => {
-    setData({
-      labels: labels,
-      datasets: [
-        {
-          label: currentYear,
-          data: getDatasets(),
-          backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-            "rgba(255, 205, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-          ],
-          borderColor: [
-            "rgb(255, 99, 132)",
-            "rgb(255, 159, 64)",
-            "rgb(255, 205, 86)",
-            "rgb(75, 192, 192)",
-          ],
-          borderWidth: 1,
-          barPercentage: 1,
-          borderRadius: {
-            topLeft: 5,
-            topRight: 5,
-          },
-        },
-      ],
-    });
+    getAvailableYears();
+    updateDatasets();
+    // setData();
+  }, [expenses]);
+
+  //
+  useEffect(() => {
+    updateDatasets();
   }, [currentYear]);
 
   if (loading) return <Loading />;
