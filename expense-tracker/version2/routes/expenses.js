@@ -20,10 +20,11 @@ const parseResult = (result) => {
 
 // Create
 router.post("", (request, response) => {
+  console.log(request.body);
   const { date, description, type, amount } = request.body;
   let typeId = parseInt(type);
   const sql =
-    "INSERT INTO tb_expenses (c_date, c_description, c_amount, fk_expense_type) VALUES (?, ?, ?, ?)";
+    "INSERT INTO tb_expenses (c_date, c_description, fk_expense_type, c_amount) VALUES (?, ?, ?, ?)";
   db.query(sql, [date, description, typeId, amount], (err, result) => {
     if (err) {
       console.log("Error occured while inserting a new expense.");
@@ -35,7 +36,7 @@ router.post("", (request, response) => {
 
 // Read all
 router.get("", (request, response) => {
-  const sql = "SELECT * FROM tb_expenses";
+  const sql = "SELECT * FROM tb_expenses ORDER BY c_date DESC";
   db.query(sql, (err, result) => {
     if (err) {
       console.log("Error occured while reading all expenses.");

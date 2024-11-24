@@ -56,6 +56,7 @@ const AddExpenseWindow = ({ isOpen, setIsOpen, fetchData }) => {
       return;
     } else {
       try {
+        console.log(data);
         await fetch(`${process.env.NEXT_PUBLIC_URL}/api/expenses`, {
           method: "POST",
           headers: {

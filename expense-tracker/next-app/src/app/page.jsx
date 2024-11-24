@@ -7,7 +7,7 @@ import AddExpenseWindow from "@/components/AddExpenseWindow";
 import EditExpenseWindow from "@/components/EditExpenseWindow";
 import Loading from "@/components/Loading";
 import ExpenseItem from "@/components/ExpenseItem";
-import { Add, Chart } from "@/components/Icons";
+import { Add, Chart, Left, Right } from "@/components/Icons";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { v4 } from "uuid";
@@ -19,16 +19,31 @@ const Home = () => {
   const [editId, setEditId] = useState(-1);
   const [expenses, setExpenses] = useState();
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [maxPage, setMaxPage] = useState(1);
+  const per_page = 5;
 
   // Get all expenses
   const fetchData = async () => {
+    const start = per_page * (page - 1);
+    const end = per_page * page;
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/expenses`);
       if (!res.ok) throw new Error("Failed to fetch data");
       const data = await res.json();
-      setExpenses(data);
+      setMaxPage(Math.ceil(data.length / per_page));
+      setExpenses(data.slice(start, end));
     } catch (error) {
       console.error(error);
+    }
+  };
+
+  // Change page
+  const changePage = (direction) => {
+    if (direction === "prev" && page != 1) {
+      setPage(page - 1);
+    } else if (direction === "next" && page != maxPage) {
+      setPage(page + 1);
     }
   };
 
@@ -36,7 +51,7 @@ const Home = () => {
   useEffect(() => {
     setLoading(true);
     fetchData().finally(() => setLoading(false));
-  }, []);
+  }, [page]);
 
   if (loading) return <Loading />;
   return (
@@ -73,6 +88,39 @@ const Home = () => {
             ))}
           </tbody>
         </table>
+        {expenses.length === 0 && (
+          <div className="text-3xl text-center my-3">No expenses recorded</div>
+        )}
+
+        {/* Pagination */}
+        <div
+          className="w-1/2 mx-auto text-lg mt-3
+                        flex justify-around"
+        >
+          <button
+            onClick={() => changePage("prev")}
+            disabled={page === 1}
+            className={
+              "flex items-center disabled:text-gray-400 disabled:fill-gray-400"
+            }
+          >
+            <Left />
+            Prev
+          </button>
+          <div>
+            Page: {page}/{maxPage}
+          </div>
+          <button
+            onClick={() => changePage("next")}
+            disabled={page === maxPage}
+            className={
+              "flex items-center disabled:text-gray-400 disabled:fill-gray-400"
+            }
+          >
+            Next
+            <Right />
+          </button>
+        </div>
       </div>
 
       {/* The Add button and Link to charts page */}
