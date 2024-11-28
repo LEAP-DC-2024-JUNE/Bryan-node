@@ -21,7 +21,7 @@ const randomExpense = () => {
       .split("T")[0],
     description: faker.lorem.sentences(1),
     type: faker.number.int({ min: 1, max: 4 }),
-    amount: faker.number.float({ max: 100 }),
+    amount: faker.number.float({ min: 10, max: 100 }),
   };
 };
 const addRandom = (num = 1) => {
@@ -37,4 +37,4 @@ const addRandom = (num = 1) => {
   }
 };
 
-addRandom(491);
+addRandom(1000);

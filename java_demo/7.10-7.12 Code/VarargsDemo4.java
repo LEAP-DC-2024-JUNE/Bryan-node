@@ -3,11 +3,9 @@
  * a variable number of arguments (varargs).
  */
 
-public class VarargsDemo4
-{
-    public static void main(String[] args)
-    {
-        int result;  // To hold a result
+public class VarargsDemo4 {
+    public static void main(String[] args) {
+        int result; // To hold a result
 
         // Create an array of ints.
         int[] values = { 10, 20, 30, 40, 50 };
@@ -26,17 +24,15 @@ public class VarargsDemo4
     }
 
     /**
-     * The sum method takes a variable number of int 
+     * The sum method takes a variable number of int
      * arguments and returns their sum.
      */
 
-    public static int sum(int... numbers)
-    {
-        int total = 0;  // Accumulator
+    public static int sum(int... numbers) {
+        int total = 0; // Accumulator
 
         // Add all the values in the numbers array.
-        for (int val : numbers)
-        {
+        for (int val : numbers) {
             total += val;
         }
 

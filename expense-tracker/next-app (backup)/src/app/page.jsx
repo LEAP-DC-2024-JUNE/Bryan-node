@@ -44,6 +44,8 @@ const Home = () => {
       setPage(page - 1);
     } else if (direction === "next" && page != maxPage) {
       setPage(page + 1);
+    } else {
+      setPage(parseInt(direction));
     }
   };
 
@@ -94,7 +96,7 @@ const Home = () => {
 
         {/* Pagination */}
         <div
-          className="w-1/2 mx-auto text-lg mt-3
+          className="w-1/2 mx-auto text-sm  md:text-lg mt-3
                         flex justify-around"
         >
           <button
@@ -108,7 +110,17 @@ const Home = () => {
             Prev
           </button>
           <div>
-            Page: {page}/{maxPage}
+            Page:{" "}
+            {/* <input
+              type="number"
+              name="page"
+              id="page"
+              value={page}
+              min={1}
+              max={maxPage}
+              onChange={(e) => changePage(e.target.value)}
+            /> */}
+            {page}/{maxPage}
           </div>
           <button
             onClick={() => changePage("next")}

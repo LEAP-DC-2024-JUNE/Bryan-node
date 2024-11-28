@@ -1,6 +1,6 @@
 "use client";
 import ChartDays from "@/components/ChartDays";
-import ChartMonths from "@/components/ChartMonths";
+import ChartMonths from "@/app/chart/ChartMonths";
 import ChartYears from "@/components/ChartYears";
 import { useState } from "react";
 
